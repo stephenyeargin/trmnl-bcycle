@@ -1,0 +1,65 @@
+---
+strategy: polling
+no_screen_padding: 'no'
+dark_mode: 'no'
+static_data: ''
+polling_verb: get
+polling_url: |
+  https://gbfs.bcycle.com/{{ bcycle_city }}/gbfs_versions.json
+  https://gbfs.bcycle.com/{{ bcycle_city }}/system_information.json
+  https://gbfs.bcycle.com/{{ bcycle_city }}/station_information.json
+  https://gbfs.bcycle.com/{{ bcycle_city }}/station_status.json
+  https://gbfs.bcycle.com/{{ bcycle_city }}/system_pricing_plans.json
+  https://gbfs.bcycle.com/{{ bcycle_city }}/system_regions.json
+polling_headers: ''
+id: 100262
+custom_fields:
+- keyname: author_bio
+  name: About This Plugin
+  field_type: author_bio
+  description: Show the status of BCycle stations around town.
+  github_url: https://github.com/stephenyeargin/trmnl-bcycle
+  learn_more_url: https://bcycle.com
+  email_address: stephen@yearg.in
+- keyname: bcycle_city
+  field_type: select
+  name: City
+  description: Where the BCycle bikes are rolling.
+  options:
+  - "Aventura BCycle\t(Aventura, FL)": bcycle_aventura
+  - Bentonville BCycle (Bentonville, AR): bcycle_bentonville
+  - BikeLNK (Lincoln, NE): bcycle_bikelnk
+  - Boulder BCycle (Boulder, CO): bcycle_boulder
+  - Broward B-cycle (Fort Lauderdale, FL): bcycle_broward
+  - Bublr Bikes (Milwaukee, WI): bcycle_bublr
+  - Cincy Red Bike (Cincinnati, OH): bcycle_cincyredbike
+  - Clemson BikeShare (Clemson, SC): bcycle_clemson
+  - Des Moines B-cycle (Des Moines, IA): bcycle_desmoines
+  - El Paso B-cycle (El Paso, TX): bcycle_elpaso
+  - Explore Bike Share (Memphis, TN): bcycle_memphis
+  - GREENbike (Salt Lake City, UT): bcycle_greenbikeslc
+  - Greenville B-cycle (Greenville, SC): bcycle_greenville
+  - Heartland B-cycle (Omaha, NE): bcycle_heartland
+  - Indego (Philadelphia, PA): bcycle_indego
+  - Indy - Pacers Bikeshare (Indianapolis, IN): bcycle_pacersbikeshare
+  - Jackson County (Jackson, MI): bcycle_jacksoncounty
+  - Madison B-cycle (Madison, WI): bcycle_madison
+  - Metro Bike Share (Los Angeles, CA): bcycle_lametro
+  - Nashville BCycle (Nashville, TN): bcycle_nashville
+  - Redding Bikeshare (Redding, CA): bcycle_redding
+  - RGV B-cycle (McAllen, TX): bcycle_mcallen
+  - RTC Bike Share (Las Vegas, NV): bcycle_rtcbikeshare
+  - San Antonio B-cycle (San Antonio, TX): bcycle_sanantonio
+  - Santa Barbara BCycle (Santa Barbara, CA): bcycle_santabarbara
+  - Santa Cruz BCycle (Santa Cruz, CA): bcycle_santacruz
+  - Truckee BCycle (Truckee, CA): bcycle_truckee
+  - Valentine Bike Share (Valentine, NE): bcycle_valentine
+- keyname: bcycle_station_region
+  field_type: string
+  name: BCycle Station Region (Optional)
+  description: Filter list of stations to an area. Refer to the <a href="https://www.bcycle.com/gbfs" target="_blank" class="underline">GBFS data</a> for valid values.
+  default: ''
+  placeholder: bcycle_nashville_region_1
+  optional: true
+name: BCycle
+refresh_interval: 15
