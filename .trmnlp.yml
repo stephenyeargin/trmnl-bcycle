@@ -9,11 +9,16 @@ watch:
 # values of custom fields (defined in src/settings.yml)
 custom_fields: {
   bcycle_city: bcycle_nashville,
-  bcycle_station_region: ''
-  # bcycle_station_region: bcycle_nashville_region_1
-  # bcycle_station_region: bcycle_nashville_region_87
-  # bcycle_station_region: bcycle_nashville_region_86
-  # bcycle_station_region: bcycle_nashville_region_83
+  # bcycle_station_region: ''
+  # bcycle_station_region: "bcycle_nashville_region_1" # Downtown
+  # bcycle_station_region: "bcycle_nashville_region_21" # Parks
+  # bcycle_station_region: "bcycle_nashville_region_38" # ?
+  # bcycle_station_region: "bcycle_nashville_region_74" # ??
+  # bcycle_station_region: "bcycle_nashville_region_83" # South
+  # bcycle_station_region: "bcycle_nashville_region_84" # West
+  # bcycle_station_region: "bcycle_nashville_region_85" # Midtown
+  # bcycle_station_region: "bcycle_nashville_region_86" # North
+  # bcycle_station_region: "bcycle_nashville_region_87" # East
 }
 
 # override variables

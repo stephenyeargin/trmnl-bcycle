@@ -23,7 +23,7 @@
               {{ status.num_bikes_available }}
             </div>
             <div class="w--3 image">{{ svg_anchor }}</div>
-            <div class="label label--small w--5 text--center label--inverted">
+            <div class="label label--small w--5 text--center label--outline">
               {{ status.num_docks_available }}
             </div>
           </div>
@@ -32,4 +32,12 @@
     {% endfor %}
     </div>
   </div>
+
+  {% if station_information.size <= 4 %}
+  <div class="title_bar">
+    <img class="image" src="https://raw.githubusercontent.com/stephenyeargin/trmnl-bcycle/main/assets/bcycle.svg" />
+    <span class="title">{{ system_information.name }} Station Status</span>
+    <span class="instance">{{ trmnl.plugin_settings.instance_name }}</span>
+  </div>
+  {% endif %}
 </div>
