@@ -1,5 +1,6 @@
 <div class="view">
   <div class="layout layout--row layout--top">
+    {% render "error_message" with trmnl: trmnl, system_information: system_information %}
     <div class="grid grid--cols-2 gap--large">
     {% for station in station_information limit: 6 %}
       {% assign status = station_status | where: "station_id", station.station_id | first %}

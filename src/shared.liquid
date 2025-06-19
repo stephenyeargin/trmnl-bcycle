@@ -6,8 +6,18 @@
 {% assign system_pricing_plans = IDX_4 %}
 {% assign system_regions = IDX_5.data.regions %}
 
+{% template error_message %}
+{% unless system_information.name %}
+  <div class="">
+    <span class="title clamp--none">
+      Unable to reach the GBFS feed for {{ trmnl.plugin_settings.custom_fields_values.bcycle_city }}
+    </span>
+</div>
+{% endunless %}
+{% endtemplate %}
+
 {% comment %} Filter to a Specific Region if Set {% endcomment %}
-{% if trmnl.plugin_settings.custom_fields_values.bcycle_station_region %}
+{% if trmnl.plugin_settings.custom_fields_values.bcycle_station_region != '' %}
 {% assign station_information = station_information | where: "region_id", trmnl.plugin_settings.custom_fields_values.bcycle_station_region %}
 {% endif %}
 

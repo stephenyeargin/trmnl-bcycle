@@ -18,6 +18,7 @@
 
 <div class="view">
   <div class="layout layout--row layout--top">
+    {% render "error_message" with trmnl: trmnl, system_information: system_information %}
     <div class="grid grid--cols-{{ column_count }} gap--{{ gap_size }}">
     {% for station in station_information limit: 24 %}
       {% assign status = station_status | where: "station_id", station.station_id | first %}
@@ -41,4 +42,11 @@
     {% endfor %}
     </div>
   </div>
+
+  <div class="title_bar">
+    <img class="image" src="https://raw.githubusercontent.com/stephenyeargin/trmnl-bcycle/main/assets/bcycle.svg" />
+    <span class="title">{{ system_information.name  }} Station Status</span>
+    <span class="instance">{{ trmnl.plugin_settings.instance_name }}</span>
+  </div>
+
 </div>
