@@ -1,8 +1,15 @@
+{% assign label_size = 'small' %}
 {% assign gap_size = 'medium' %}
 {% assign column_count = 4 %}
 
 {% if station_information.size < 11 %}
   {% assign gap_size = 'large' %}
+  {% assign column_count = 2 %}
+{% endif %}
+
+{% if station_information.size < 5 %}
+  {% assign gap_size = 'xlarge' %}
+  {% assign label_size = 'medium' %}
   {% assign column_count = 2 %}
 {% endif %}
 
@@ -15,15 +22,15 @@
       <div class="item">
         <div class="meta"></div>
         <div class="content">
-          <span class="label label--small label--underline"><b>{{ station.name }}</b></span>
-          <span class="description">{{ station.address }}</span>
+          <span class="label label--{{ label_size }} label--underline"><b>{{ station.name }}</b></span>
+          <span class="label label--{{ label_size }}">{{ station.address }}</span>
           <div class="flex flex--row">
-            <div class="w--3 image">{{ svg_bike }}</div>
-            <div class="label label--small w--5 text--center label--inverted">
+            <div class="w--4 image">{{ svg_bike }}</div>
+            <div class="label label--{{ label_size }} w--6 text--center label--inverted">
               {{ status.num_bikes_available }}
             </div>
-            <div class="w--3 image">{{ svg_dock }}</div>
-            <div class="label label--small w--5 text--center label--outline">
+            <div class="w--4 image">{{ svg_dock }}</div>
+            <div class="label label--{{ label_size }} w--6 text--center label--outline">
               {{ status.num_docks_available }}
             </div>
           </div>

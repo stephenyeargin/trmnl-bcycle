@@ -1,32 +1,36 @@
 {% assign gap_size = 'medium' %}
 {% assign column_count = 2 %}
+{% assign label_size = 'small' %}
 
 {% if station_information.size < 11 %}
+  {% assign column_count = 2 %}
   {% assign gap_size = 'xxlarge' %}
 {% endif %}
 
-{% if station_information.size < 6 %}
-  {% assign gap_size = 'xxlarge' %}
+{% if station_information.size <= 5 %}
+  {% assign column_count = 1 %}
+  {% assign gap_size = 'large' %}
+  {% assign label_size = 'medium' %}
 {% endif %}
 
 <div class="view">
   <div class="layout layout--row layout--top">
     {% render "error_message" with trmnl: trmnl, system_information: system_information %}
-    <div class="grid grid--cols-2 gap--{{ gap_size }}">
+    <div class="grid grid--cols-{{ column_count }} gap--{{ gap_size }}">
     {% for station in station_information limit: 12 %}
       {% assign status = station_status | where: "station_id", station.station_id | first %}
       <div class="item">
         <div class="meta"></div>
         <div class="content">
-          <span class="label label--small label--underline"><b>{{ station.name }}</b></span>
-          <span class="description">{{ station.address }}</span>
+          <span class="label label--{{ label_size }} label--underline"><b>{{ station.name }}</b></span>
+          <span class="label label--{{ label_size }}">{{ station.address }}</span>
           <div class="flex flex--row">
-            <div class="w--3 image">{{ svg_bike }}</div>
-            <div class="label label--small w--5 text--center label--inverted">
+            <div class="w--4 image">{{ svg_bike }}</div>
+            <div class="label label--{{ label_size }} w--6 text--center label--inverted">
               {{ status.num_bikes_available }}
             </div>
-            <div class="w--3 image">{{ svg_dock }}</div>
-            <div class="label label--small w--5 text--center label--outline">
+            <div class="w--4 image">{{ svg_dock }}</div>
+            <div class="label label--{{ label_size }} w--6 text--center label--outline">
               {{ status.num_docks_available }}
             </div>
           </div>
@@ -36,10 +40,10 @@
     </div>
   </div>
 
-  {% if station_information.size <= 12 %}
+  {% comment %} {% if station_information.size <= 12 %} {% endcomment %}
   <div class="title_bar">
     <img class="image" src="https://raw.githubusercontent.com/stephenyeargin/trmnl-bcycle/main/assets/bcycle.svg" />
     <span class="title">{{ system_information.name }} Station Status</span>
   </div>
-  {% endif %}
+  {% comment %} {% endif %} {% endcomment %}
 </div>
