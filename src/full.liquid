@@ -35,10 +35,16 @@
             <div class="w--4 image">{{ svg_bike }}</div>
             <div class="label label--{{ label_size }} clamp--none px--2 text--center label--inverted">
               {{ status.num_bikes_available }}
+              {% unless status.is_renting and status.is_installed %}
+              ⚠︎ Offline
+              {% endunless %}
             </div>
             <div class="w--4 image">{{ svg_dock }}</div>
             <div class="label label--{{ label_size }} clamp--none px--2 text--center label--outline">
               {{ status.num_docks_available }}
+              {% unless status.is_returning and status.is_installed %}
+              ⚠︎ Offline
+              {% endunless %}
             </div>
           </div>
         </div>
