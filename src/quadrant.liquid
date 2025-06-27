@@ -1,8 +1,14 @@
 <div class="view">
-  <div class="layout layout--row layout--top">
+  <div class="layout layout--row">
     {% render "error_message" with trmnl: trmnl, system_information: system_information %}
-    <div class="grid grid--cols-2 gap--large">
-    {% for station in station_information limit: 6 %}
+    <div
+      class="column"
+      data-list-limit="true"
+      data-list-hidden-count="true"
+      data-list-max-height="230"
+      data-list-max-columns="2"
+    >
+    {% for station in station_information %}
       {% assign status = station_status | where: "station_id", station.station_id | first %}
       <div class="item">
         <div class="meta"></div>
@@ -27,11 +33,15 @@
           </div>
         </div>
       </div>
+    {% else %}
+    <div class="title title-large">
+      No stations matched criteria.
+    </div>
     {% endfor %}
     </div>
   </div>
 
-  {% if station_information.size <= 4 %}
+  {% if station_information.size <= 6 %}
   <div class="title_bar">
     <img class="image" src="https://raw.githubusercontent.com/stephenyeargin/trmnl-bcycle/main/assets/bcycle.svg" />
     <span class="title">{{ system_information.name }} Station Status</span>

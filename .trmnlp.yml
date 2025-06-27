@@ -18,7 +18,7 @@ custom_fields: {
   # bcycle_station_region: "bcycle_nashville_region_84" # West
   # bcycle_station_region: "bcycle_nashville_region_85" # Midtown
   # bcycle_station_region: "bcycle_nashville_region_86" # North
-  bcycle_station_region: "bcycle_nashville_region_87" # East
+  # bcycle_station_region: "bcycle_nashville_region_87" # East
 }
 
 # override variables

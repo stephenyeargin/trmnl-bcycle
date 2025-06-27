@@ -2,29 +2,17 @@
 {% assign gap_size = 'medium' %}
 {% assign column_count = 4 %}
 
-{% if station_information.size < 15 %}
-  {% assign label_size = 'small' %}
-  {% assign gap_size = 'xlarge' %}
-  {% assign column_count = 3 %}
-{% endif %}
-
-{% if station_information.size < 11 %}
-  {% assign label_size = 'medium' %}
-  {% assign gap_size = 'xlarge' %}
-  {% assign column_count = 2 %}
-{% endif %}
-
-{% if station_information.size < 6 %}
-  {% assign label_size = 'medium' %}
-  {% assign gap_size = 'xxlarge' %}
-  {% assign column_count = 2 %}
-{% endif %}
-
 <div class="view">
-  <div class="layout layout--row layout--top">
+  <div class="layout layout--row">
     {% render "error_message" with trmnl: trmnl, system_information: system_information %}
-    <div class="grid grid--cols-{{ column_count }} gap--{{ gap_size }}">
-    {% for station in station_information limit: 24 %}
+    <div
+      class="column"
+      data-list-limit="true"
+      data-list-hidden-count="true"
+      data-list-max-height="420"
+      data-list-max-columns="4"
+    >
+    {% for station in station_information %}
       {% assign status = station_status | where: "station_id", station.station_id | first %}
       <div class="item">
         <div class="meta"></div>
@@ -49,6 +37,10 @@
           </div>
         </div>
       </div>
+    {% else %}
+    <div class="title title-large">
+      No stations matched criteria.
+    </div>
     {% endfor %}
     </div>
   </div>
