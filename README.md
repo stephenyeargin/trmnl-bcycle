@@ -1,6 +1,6 @@
 # BCycle for TRMNL
 
-[![Build](https://github.com/stephenyeargin/trmnl-nashville-pollen-aqi/actions/workflows/build.yml/badge.svg)](https://github.com/stephenyeargin/trmnl-nashville-pollen-aqi/actions/workflows/build.yml)
+[![Build](https://github.com/stephenyeargin/trmnl-bcycle/actions/workflows/build.yml/badge.svg)](https://github.com/stephenyeargin/trmnl-bcycle/actions/workflows/build.yml)
 
 ![promo](assets/promo.png)
 
