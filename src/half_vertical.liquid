@@ -1,52 +1,49 @@
 {% assign label_size = 'small' %}
 
-<div class="view">
-  <div class="layout layout--row">
-    {% render "error_message" with trmnl: trmnl, system_information: system_information %}
-    <div
-      class="column"
-      data-list-limit="true"
-      data-list-hidden-count="true"
-      data-list-max-height="420"
-      data-list-max-columns="2"
-    >
-    {% for station in station_information %}
-      {% assign status = station_status | where: "station_id", station.station_id | first %}
-      <div class="item">
-        <div class="meta"></div>
-        <div class="content">
-          <span class="label label--{{ label_size }} label--underline"><b>{{ station.name }}</b></span>
-          <span class="label label--{{ label_size }}">{{ station.address }}</span>
-          <div class="flex flex--row">
-            <div class="w--4 image">{{ svg_bike }}</div>
-            <div class="label label--{{ label_size }} clamp--none px--2 text--center label--inverted">
-              {{ status.num_bikes_available }}
-              {% unless status.is_renting and status.is_installed %}
-              ⚠︎ Offline
-              {% endunless %}
-            </div>
-            <div class="w--4 image">{{ svg_dock }}</div>
-            <div class="label label--{{ label_size }} clamp--none px--2 text--center label--outline">
-              {{ status.num_docks_available }}
-              {% unless status.is_returning and status.is_installed %}
-              ⚠︎ Offline
-              {% endunless %}
-            </div>
+<div class="layout layout--row">
+  {% render "error_message" with trmnl: trmnl, system_information: system_information %}
+  <div
+    class="column"
+    data-list-limit="true"
+    data-list-hidden-count="true"
+    data-list-max-height="420"
+    data-list-max-columns="2"
+  >
+  {% for station in station_information %}
+    {% assign status = station_status | where: "station_id", station.station_id | first %}
+    <div class="item">
+      <div class="meta"></div>
+      <div class="content">
+        <span class="label label--{{ label_size }} label--underline"><b>{{ station.name }}</b></span>
+        <span class="label label--{{ label_size }}">{{ station.address }}</span>
+        <div class="flex flex--row">
+          <div class="w--4 image">{{ svg_bike }}</div>
+          <div class="label label--{{ label_size }} clamp--none px--2 text--center label--inverted">
+            {{ status.num_bikes_available }}
+            {% unless status.is_renting and status.is_installed %}
+            ⚠︎ Offline
+            {% endunless %}
+          </div>
+          <div class="w--4 image">{{ svg_dock }}</div>
+          <div class="label label--{{ label_size }} clamp--none px--2 text--center label--outline">
+            {{ status.num_docks_available }}
+            {% unless status.is_returning and status.is_installed %}
+            ⚠︎ Offline
+            {% endunless %}
           </div>
         </div>
       </div>
-    {% else %}
-    <div class="title title-large">
-      No stations matched criteria.
     </div>
-    {% endfor %}
-    </div>
+  {% else %}
+  <div class="title title-large">
+    No stations matched criteria.
   </div>
-
-  {% comment %} {% if station_information.size <= 12 %} {% endcomment %}
-  <div class="title_bar">
-    <img class="image" src="https://raw.githubusercontent.com/stephenyeargin/trmnl-bcycle/main/assets/bcycle.svg" />
-    <span class="title">{{ system_information.name }} Station Status</span>
+  {% endfor %}
   </div>
-  {% comment %} {% endif %} {% endcomment %}
 </div>
+
+<div class="title_bar">
+  <img class="image" src="https://raw.githubusercontent.com/stephenyeargin/trmnl-bcycle/main/assets/bcycle.svg" />
+  <span class="title">{{ system_information.name }} Station Status</span>
+</div>
+
