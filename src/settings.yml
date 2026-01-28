@@ -9,8 +9,6 @@ polling_url: |
   https://gbfs.bcycle.com/{{ bcycle_city }}/system_information.json
   https://gbfs.bcycle.com/{{ bcycle_city }}/station_information.json
   https://gbfs.bcycle.com/{{ bcycle_city }}/station_status.json
-  https://gbfs.bcycle.com/{{ bcycle_city }}/system_pricing_plans.json
-  https://gbfs.bcycle.com/{{ bcycle_city }}/system_regions.json
 polling_headers: ''
 id: 100262
 custom_fields:
