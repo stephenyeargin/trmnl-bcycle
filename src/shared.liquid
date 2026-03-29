@@ -7,18 +7,48 @@
 {% template error_message %}
 {% unless system_information.name %}
   <div class="">
-    <span class="title clamp--none">
+    <span class="title">
       Unable to reach the GBFS feed for {{ trmnl.plugin_settings.custom_fields_values.bcycle_city }}
     </span>
 </div>
 {% endunless %}
 {% endtemplate %}
 
+{% comment %} SVG Icons {% endcomment %}
+{% capture svg_bike %}<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M312 32c-13.3 0-24 10.7-24 24s10.7 24 24 24l25.7 0 34.6 64-149.4 0-27.4-38C191 99.7 183.7 96 176 96l-56 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l43.7 0 22.1 30.7-26.6 53.1c-10-2.5-20.5-3.8-31.2-3.8C57.3 224 0 281.3 0 352s57.3 128 128 128c65.3 0 119.1-48.9 127-112l49 0c8.5 0 16.3-4.5 20.7-11.8l84.8-143.5 21.7 40.1C402.4 276.3 384 312 384 352c0 70.7 57.3 128 128 128s128-57.3 128-128s-57.3-128-128-128c-13.5 0-26.5 2.1-38.7 6L375.4 48.8C369.8 38.4 359 32 347.2 32L312 32zM458.6 303.7l32.3 59.7c6.3 11.7 20.9 16 32.5 9.7s16-20.9 9.7-32.5l-32.3-59.7c3.6-.6 7.4-.9 11.2-.9c39.8 0 72 32.2 72 72s-32.2 72-72 72s-72-32.2-72-72c0-18.6 7-35.5 18.6-48.3zM133.2 368l65 0c-7.3 32.1-36 56-70.2 56c-39.8 0-72-32.2-72-72s32.2-72 72-72c1.7 0 3.4 .1 5.1 .2l-24.2 48.5c-9 18.1 4.1 39.4 24.3 39.4zm33.7-48l50.7-101.3 72.9 101.2-.1 .1-123.5 0zm90.6-128l108.5 0L317 274.8 257.4 192z"/></svg>{% endcapture %}
+{% capture svg_dock %}<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080"><g transform="matrix(2.45769,0,0,0.658028,-359.878,384.558)"><path d="M168.902,1056.86L168.902,283.153C168.902,257.235 189.912,236.225 215.83,236.225L216.078,236.225C242.244,236.225 263.457,257.437 263.457,283.603L263.457,997.043L468.838,997.043L468.838,283.153C468.838,257.235 489.849,236.225 515.766,236.225L516.014,236.225C542.181,236.225 563.393,257.437 563.393,283.603L563.393,1056.86L168.902,1056.86Z"/></g><g transform="matrix(7.27471e-17,-1.18805,2.88295,1.7653e-16,-155.838,1283.09)"><path d="M593.328,271.199L593.328,294.692L396.908,237.895L593.328,188.035L593.328,211.528L1080,211.528L1080,271.199L593.328,271.199Z"/></g></svg>{% endcapture %}
+{% capture bcycle_logo %}<svg width="100%" height="100%" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;"> <g transform="matrix(0.965511,0,0,0.969257,3.17245,3.15371)"><circle cx="100" cy="100" r="95" style="fill:white;stroke:rgb(44,44,44);stroke-width:16px;"/></g><g transform="matrix(1.07024,0,0,1.21232,102.057,149.403)"><path d="M5.244,0L-33.896,0L-33.896,-86.367L8.057,-86.367C18.643,-86.211 26.143,-83.145 30.557,-77.168C33.213,-73.496 34.541,-69.102 34.541,-63.984C34.541,-58.711 33.213,-54.473 30.557,-51.27C29.072,-49.473 26.885,-47.832 23.994,-46.348C28.408,-44.746 31.738,-42.207 33.984,-38.73C36.23,-35.254 37.835,-30.996 37.835,-26.036C37.835,-20.918 36.064,-16.367 33.486,-12.305C31.846,-9.609 29.795,-7.344 27.334,-5.508C24.561,-3.398 21.289,-1.953 17.52,-1.172C13.75,-0.391 9.658,0 5.244,0ZM7.423,-35.354L-9.056,-35.414L-9.195,-18.299L4.541,-18.299C8.33,-18.299 15.123,-19.208 15.347,-27.082C15.537,-33.755 11.173,-35.315 7.423,-35.354ZM9.536,-59.282C9.72,-63.054 7.498,-65.346 4.373,-66.635C4.528,-66.546 -9.408,-66.692 -9.408,-66.692L-9.388,-53.518L3.366,-53.654C7.155,-53.654 9.357,-55.579 9.536,-59.282Z" style="fill:rgb(44,44,44);fill-rule:nonzero;"/></g></svg>{% endcapture %}
+
+{% template station_card %}
+<div class="item mb--1 lg:mb--2">
+  <div class="meta"></div>
+  <div class="content">
+    <span class="label label--small lg:label--base label--underline" data-clamp="1"><b>{{ station.name }}</b></span>
+    <span class="description description--small lg:description--base" data-clamp="1">{{ station.address }}</span>
+    <div class="flex flex--row">
+      <div class="w--4 image">{{ svg_bike }}</div>
+      <div class="pr--2 text--center">
+        <span class="label label--small lg:label--base label--inverted">
+          {{ status.num_bikes_available }}
+          {% unless status.is_renting and status.is_installed %}
+          ⚠︎ Offline
+          {% endunless %}
+        </span>
+      </div>
+      <div class="w--4 image">{{ svg_dock }}</div>
+      <div class="pr--2 text--center">
+        <span class="label label--small lg:label--base label--outline">
+        {{ status.num_docks_available }}
+        {% unless status.is_returning and status.is_installed %}
+        ⚠︎ Offline
+        {% endunless %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endtemplate %}
+
 {% comment %} Filter to a Specific Region if Set {% endcomment %}
 {% if trmnl.plugin_settings.custom_fields_values.bcycle_station_region != '' %}
 {% assign station_information = station_information | where: "region_id", trmnl.plugin_settings.custom_fields_values.bcycle_station_region %}
 {% endif %}
-
-{% comment %} SVG Icons {% endcomment %}
-{% capture svg_bike %}<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M312 32c-13.3 0-24 10.7-24 24s10.7 24 24 24l25.7 0 34.6 64-149.4 0-27.4-38C191 99.7 183.7 96 176 96l-56 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l43.7 0 22.1 30.7-26.6 53.1c-10-2.5-20.5-3.8-31.2-3.8C57.3 224 0 281.3 0 352s57.3 128 128 128c65.3 0 119.1-48.9 127-112l49 0c8.5 0 16.3-4.5 20.7-11.8l84.8-143.5 21.7 40.1C402.4 276.3 384 312 384 352c0 70.7 57.3 128 128 128s128-57.3 128-128s-57.3-128-128-128c-13.5 0-26.5 2.1-38.7 6L375.4 48.8C369.8 38.4 359 32 347.2 32L312 32zM458.6 303.7l32.3 59.7c6.3 11.7 20.9 16 32.5 9.7s16-20.9 9.7-32.5l-32.3-59.7c3.6-.6 7.4-.9 11.2-.9c39.8 0 72 32.2 72 72s-32.2 72-72 72s-72-32.2-72-72c0-18.6 7-35.5 18.6-48.3zM133.2 368l65 0c-7.3 32.1-36 56-70.2 56c-39.8 0-72-32.2-72-72s32.2-72 72-72c1.7 0 3.4 .1 5.1 .2l-24.2 48.5c-9 18.1 4.1 39.4 24.3 39.4zm33.7-48l50.7-101.3 72.9 101.2-.1 .1-123.5 0zm90.6-128l108.5 0L317 274.8 257.4 192z"/></svg>{% endcapture %}
-{% capture svg_dock %}<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080"><g transform="matrix(2.45769,0,0,0.658028,-359.878,384.558)"><path d="M168.902,1056.86L168.902,283.153C168.902,257.235 189.912,236.225 215.83,236.225L216.078,236.225C242.244,236.225 263.457,257.437 263.457,283.603L263.457,997.043L468.838,997.043L468.838,283.153C468.838,257.235 489.849,236.225 515.766,236.225L516.014,236.225C542.181,236.225 563.393,257.437 563.393,283.603L563.393,1056.86L168.902,1056.86Z"/> </g> <g transform="matrix(7.27471e-17,-1.18805,2.88295,1.7653e-16,-155.838,1283.09)"> <path d="M593.328,271.199L593.328,294.692L396.908,237.895L593.328,188.035L593.328,211.528L1080,211.528L1080,271.199L593.328,271.199Z"/></g></svg>{% endcapture %}
