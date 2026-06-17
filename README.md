@@ -1,6 +1,6 @@
 # BCycle for TRMNL
 
-[![Build](https://github.com/stephenyeargin/trmnl-bcycle/actions/workflows/build.yml/badge.svg)](https://github.com/stephenyeargin/trmnl-bcycle/actions/workflows/build.yml)
+[![Build](https://github.com/stephenyeargin/trmnl-bcycle/actions/workflows/build.yml/badge.svg)](https://github.com/stephenyeargin/trmnl-bcycle/actions/workflows/build.yml) [![TRMNL Recipe Connections](https://trmnl-badges.gohk.xyz/badge/connections?recipe=100262)](https://trmnl.com/recipes/100262)
 
 ![promo](assets/promo.png)
 
