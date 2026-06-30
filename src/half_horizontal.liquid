@@ -1,15 +1,14 @@
 <div class="layout layout--row">
-  {% render "error_message" with trmnl: trmnl, system_information: system_information %}
+  {% render "error_message" with trmnl: trmnl, system_name: system_name %}
   <div
     class="columns"
     data-overflow="true"
     data-overflow-counter="true"
-    data-overflow-max-cols="4"
+    data-overflow-max-cols="3"
   >
-    <div class="column">
-    {% for station in station_information %}
-      {% assign status = station_status | where: "station_id", station.station_id | first %}
-      {% render 'station_card' station: station, status: status, svg_bike: svg_bike, svg_dock: svg_dock %}
+    <div class="column gap">
+    {% for station in stations %}
+      {% render 'station_card' station: station %}
     {% else %}
     <div class="title title-large lg:title--xlarge">
       No stations matched criteria.
@@ -19,10 +18,10 @@
   </div>
 </div>
 
-{% if station_information.size <= 8 %}
+{% if stations.size <= 8 %}
 <div class="title_bar">
   <img class="image" src="data:image/svg+xml;base64,{{ bcycle_logo | base64_encode }}" />
-  <span class="title">{{ system_information.name }} Station Status</span>
+  <span class="title">{{ system_name }} @ {{ last_updated | date: '%s' | plus: trmnl.user.utc_offset | date: '%b %-d, %-I:%M %P' }}</span>
   <span class="instance">{{ trmnl.plugin_settings.instance_name }}</span>
 </div>
 {% endif %}

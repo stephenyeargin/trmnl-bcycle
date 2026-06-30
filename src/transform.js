@@ -1,35 +1,32 @@
 function transform(input) {
-  const { IDX_0, IDX_1, IDX_2, IDX_3 } = input;
+  const MAX_TO_RETURN = 100;
+  const { IDX_0, IDX_1, IDX_2, IDX_3, trmnl } = input;
+  const bcycle_station_region = trmnl?.plugin_settings?.custom_fields_values?.bcycle_station_region;
+
+  const statusById = Object.fromEntries(
+    (IDX_3?.data?.stations || []).map((s) => [s.station_id, s])
+  );
+
+  const stations = (IDX_2?.data?.stations || [])
+    .filter((station) => !bcycle_station_region || station.region_id === bcycle_station_region)
+    .slice(0, MAX_TO_RETURN)
+    .map((station) => {
+      const status = statusById[station.station_id] || {};
+      return {
+        station_id: station.station_id,
+        name: station.name,
+        address: station.address,
+        num_bikes_available: status.num_bikes_available,
+        num_docks_available: status.num_docks_available,
+        is_renting: status.is_renting,
+        is_returning: status.is_returning,
+        is_installed: status.is_installed,
+      };
+    });
 
   return {
-    IDX_0,
-    IDX_1: {
-      data: {
-        name: IDX_1?.data?.name,
-      },
-    },
-    IDX_2: {
-      data: {
-        stations: IDX_2?.data?.stations?.map((station) => ({
-          station_id: station.station_id,
-          name: station.name,
-          address: station.address,
-          region_id: station.region_id,
-        })) || [],
-      },
-    },
-    IDX_3: {
-      last_updated: IDX_3?.last_updated,
-      data: {
-        stations: IDX_3?.data?.stations?.map((station) => ({
-          station_id: station.station_id,
-          num_bikes_available: station.num_bikes_available,
-          num_docks_available: station.num_docks_available,
-          is_renting: station.is_renting,
-          is_returning: station.is_returning,
-          is_installed: station.is_installed,
-        })) || [],
-      },
-    },
+    last_updated: IDX_0?.last_updated,
+    system_name: IDX_1?.data?.name,
+    stations,
   };
 }
