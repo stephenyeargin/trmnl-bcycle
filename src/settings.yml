@@ -61,5 +61,5 @@ custom_fields:
   placeholder: bcycle_nashville_region_1
   optional: true
 name: BCycle
-description: Live bike share availability for BCycle stations
+description: Live bike share station status
 refresh_interval: 15
