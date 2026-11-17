@@ -8,6 +8,8 @@
 
 ![screenshot](assets/screenshot.png)
 
+![screenshot-2](assets/screenshot-2.png)
+
 ## Development
 
 ### Releasing
