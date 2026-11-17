@@ -10,15 +10,16 @@
 
 {% capture bcycle_logo %}<svg width="100%" height="100%" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;"> <g transform="matrix(0.965511,0,0,0.969257,3.17245,3.15371)"><circle cx="100" cy="100" r="95" style="fill:white;stroke:rgb(44,44,44);stroke-width:16px;"/></g><g transform="matrix(1.07024,0,0,1.21232,102.057,149.403)"><path d="M5.244,0L-33.896,0L-33.896,-86.367L8.057,-86.367C18.643,-86.211 26.143,-83.145 30.557,-77.168C33.213,-73.496 34.541,-69.102 34.541,-63.984C34.541,-58.711 33.213,-54.473 30.557,-51.27C29.072,-49.473 26.885,-47.832 23.994,-46.348C28.408,-44.746 31.738,-42.207 33.984,-38.73C36.23,-35.254 37.835,-30.996 37.835,-26.036C37.835,-20.918 36.064,-16.367 33.486,-12.305C31.846,-9.609 29.795,-7.344 27.334,-5.508C24.561,-3.398 21.289,-1.953 17.52,-1.172C13.75,-0.391 9.658,0 5.244,0ZM7.423,-35.354L-9.056,-35.414L-9.195,-18.299L4.541,-18.299C8.33,-18.299 15.123,-19.208 15.347,-27.082C15.537,-33.755 11.173,-35.315 7.423,-35.354ZM9.536,-59.282C9.72,-63.054 7.498,-65.346 4.373,-66.635C4.528,-66.546 -9.408,-66.692 -9.408,-66.692L-9.388,-53.518L3.366,-53.654C7.155,-53.654 9.357,-55.579 9.536,-59.282Z" style="fill:rgb(44,44,44);fill-rule:nonzero;"/></g></svg>{% endcapture %}
 
-{% template station_card %}
 {% capture svg_bike %}<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M331.7 107.3C336 100.3 343.7 96 352 96L456 96C469.3 96 480 106.7 480 120C480 133.3 469.3 144 456 144L390.4 144L462.6 292.4C473.3 289.5 484.5 288 496 288C566.7 288 624 345.3 624 416C624 486.7 566.7 544 496 544C425.3 544 368 486.7 368 416C368 374 388.2 336.8 419.4 313.4L399 271.5L325.5 418.5C323.2 423.3 319.2 427.3 314.1 429.7C313.5 430 312.9 430.2 312.3 430.4C309.4 431.5 306.4 432 303.4 431.9L271 432C263.1 495.1 209.3 544 144 544C73.3 544 16 486.7 16 416C16 345.3 73.3 288 144 288C154.8 288 165.2 289.3 175.2 291.8L203.7 234.9L192.2 208L152 208C138.7 208 128 197.3 128 184C128 170.7 138.7 160 152 160L208 160C217.6 160 226.3 165.7 230.1 174.5L244.4 208L368.1 208L330.4 130.5C326.8 123.1 327.2 114.3 331.6 107.3zM228.5 292.7L182.9 384L267.7 384L228.6 292.7zM305.7 351L353.2 256L265 256L305.7 351zM474.4 426.5L444.7 365.5C431.9 378.5 424 396.3 424 416C424 455.8 456.2 488 496 488C535.8 488 568 455.8 568 416C568 376.2 535.8 344 496 344C493.3 344 490.5 344.2 487.9 344.5L517.6 405.5C523.4 417.4 518.4 431.8 506.5 437.6C494.6 443.4 480.2 438.4 474.4 426.5zM149.2 432C129 432 115.8 410.7 124.9 392.6L149.1 344.1C147.4 344 145.7 343.9 144 343.9C104.2 343.9 72 376.1 72 415.9C72 455.7 104.2 487.9 144 487.9C178.3 487.9 206.9 464 214.2 431.9L149.2 431.9z"/></svg>{% endcapture %}
+
 {% capture svg_dock %}<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 160C544 124.7 515.3 96 480 96L160 96zM288 320L336 320C353.7 320 368 305.7 368 288C368 270.3 353.7 256 336 256L288 256L288 320zM336 384L288 384L288 416C288 433.7 273.7 448 256 448C238.3 448 224 433.7 224 416L224 232C224 209.9 241.9 192 264 192L336 192C389 192 432 235 432 288C432 341 389 384 336 384z"/></svg>{% endcapture %}
 
+{% template station_card %}
 <div class="item">
   <div class="meta"></div>
   <div class="content">
     <span class="label label--base lg:label--lg label--underline" data-clamp="1"><b>{{ station.name }}</b></span>
-    <span class="description description--small lg:description--base text--gray-3 hidden lg:block" data-clamp="1">{{ station.address }}</span>
+    <span class="description description--small lg:description--base text--gray-25 hidden lg:block" data-clamp="1">{{ station.address }}</span>
     <div class="flex flex--row gap gap--sm">
       <div>
         <img class="image h--6" src="data:image/svg+xml;base64,{{ svg_bike | base64_encode }}" />
@@ -43,4 +44,84 @@
     </div>
   </div>
 </div>
+{% endtemplate %}
+
+{% template station_map %}
+<script src="https://trmnl.com/js/maplibre-gl/5.24.0/maplibre-gl.js"></script>
+<link href="https://trmnl.com/js/maplibre-gl/5.24.0/maplibre-gl.css" rel="stylesheet">
+
+<div id="map" class="map stretch w--full"></div>
+
+<script>
+  function whenReady(cb) {
+    var tries = 0;
+    (function attempt() {
+      if (window.TRMNLMaps && window.maplibregl && document.readyState !== "loading") return cb();
+      if (++tries > 200) return;
+      setTimeout(attempt, 50);
+    })();
+  }
+
+  whenReady(function () {
+    var el = "map";
+    var stations = {{ stations | json }}.filter(function (s) { return s.lat != null && s.lon != null; });
+    var coords = stations.map(function (s) { return [s.lon, s.lat]; });
+    var bikeIcon = "data:image/svg+xml;base64,{{ svg_bike | base64_encode }}";
+    var dockIcon = "data:image/svg+xml;base64,{{ svg_dock | base64_encode }}";
+
+    function icon(src) {
+      var img = document.createElement("img");
+      img.className = "image image--adaptive h--4";
+      img.src = src;
+      return img;
+    }
+
+    function label(text) {
+      var span = document.createElement("span");
+      span.className = "label label--small";
+      span.textContent = text;
+      return span;
+    }
+
+    function chip(s) {
+      var div = document.createElement("div");
+      div.className = "flex flex--row flex--center-y gap--xsmall bg--canvas outline rounded--small p--1 z--2";
+      if (!s.is_installed) {
+        div.appendChild(label("Offline"));
+        return div;
+      }
+      div.appendChild(icon(bikeIcon));
+      div.appendChild(label(s.is_renting ? String(s.num_bikes_available) : "-"));
+      div.appendChild(icon(dockIcon));
+      div.appendChild(label(s.is_returning ? String(s.num_docks_available) : "-"));
+      return div;
+    }
+
+    TRMNLMaps.watch(el, function () {
+      var map = new maplibregl.Map(TRMNLMaps.options({
+        el: el, preset: "streets", center: coords[0] || [0, 0], zoom: 15
+      }));
+      if (coords.length > 1) {
+        var pad = TRMNLPaint.px(40, { el: el });
+        TRMNLMaps.fit(map, coords, { padding: pad, maxZoom: 16 });
+        var canvas = map.getCanvasContainer();
+        var inFrame = function () {
+          return coords.every(function (c) {
+            var p = map.project(c);
+            return p.x >= pad && p.y >= pad && p.x <= canvas.clientWidth - pad && p.y <= canvas.clientHeight - pad;
+          });
+        };
+        while (!inFrame() && map.getZoom() > 1) {
+          map.jumpTo({ zoom: map.getZoom() - 1 });
+        }
+      }
+      stations.forEach(function (s) {
+        new maplibregl.Marker({ element: chip(s), anchor: "center" })
+          .setLngLat([s.lon, s.lat])
+          .addTo(map);
+      });
+      return map;
+    });
+  });
+</script>
 {% endtemplate %}
