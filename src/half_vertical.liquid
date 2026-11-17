@@ -1,21 +1,25 @@
 <div class="layout layout--row">
   {% render "error_message" with trmnl: trmnl, system_name: system_name %}
-  <div
-    class="columns"
-    data-overflow="true"
-    data-overflow-counter="true"
-    data-overflow-max-cols="2"
-  >
-    <div class="column gap">
-    {% for station in stations %}
-      {% render 'station_card' station: station %}
-    {% else %}
-    <div class="title title-large lg:title--xlarge">
-      No stations matched criteria.
+  {% if trmnl.plugin_settings.custom_fields_values.bcycle_view != 'list' %}
+    {% render 'station_map', stations: stations, svg_bike: svg_bike, svg_dock: svg_dock %}
+  {% else %}
+    <div
+      class="columns"
+      data-overflow="true"
+      data-overflow-counter="true"
+      data-overflow-max-cols="2"
+    >
+      <div class="column gap">
+      {% for station in stations %}
+        {% render 'station_card' station: station, svg_bike: svg_bike, svg_dock: svg_dock %}
+      {% else %}
+      <div class="title title-large lg:title--xlarge">
+        No stations matched criteria.
+      </div>
+      {% endfor %}
+      </div>
     </div>
-    {% endfor %}
-    </div>
-  </div>
+  {% endif %}
 </div>
 
 <div class="title_bar">

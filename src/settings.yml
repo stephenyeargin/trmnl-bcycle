@@ -4,8 +4,9 @@ no_screen_padding: 'no'
 dark_mode: 'no'
 static_data: ''
 polling_verb: get
-framework_version: 2.3.7
+framework_version: 3.4.0
 serverless_language: node
+refresh_interval_floor:
 polling_url: |
   https://gbfs.bcycle.com/{{ bcycle_city }}/gbfs_versions.json
   https://gbfs.bcycle.com/{{ bcycle_city }}/system_information.json
@@ -79,10 +80,24 @@ custom_fields:
 - keyname: bcycle_station_region
   field_type: string
   name: BCycle Station Region (Optional)
-  description: Filter list of stations to an area. Refer to the <a href="https://www.bcycle.com/gbfs" target="_blank" class="underline">GBFS data</a> for valid values.
+  description: Filter list of stations to an area. Refer to the <a href="https://mobilitydatabase.org/feeds?q=bcycle" target="_blank" class="underline">GBFS data</a> for valid values.
   default: ''
   placeholder: bcycle_nashville_region_1
   optional: true
+- keyname: bcycle_station_ids
+  field_type: multi_string
+  name: BCycle Station IDs (Optional)
+  description: Station IDs to show. Overrides Station Region. Refer to <code>station_information.json</code> in the <a href="https://mobilitydatabase.org/feeds?q=bcycle" target="_blank" class="underline">GBFS data</a> for valid values.
+  placeholder: bcycle_nashville_2162
+  optional: true
+- keyname: bcycle_view
+  field_type: select
+  name: View
+  description: Show stations as a list or on a map.
+  options:
+  - Map: map
+  - Station List: list
+  default: map
 name: BCycle
 description: Live bike share station status
 refresh_interval: 15
