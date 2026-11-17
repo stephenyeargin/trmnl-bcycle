@@ -22,7 +22,7 @@
     <span class="description description--small lg:description--base text--gray-25 hidden lg:block" data-clamp="1">{{ station.address }}</span>
     <div class="flex flex--row gap gap--sm">
       <div>
-        <img class="image h--6" src="data:image/svg+xml;base64,{{ svg_bike | base64_encode }}" />
+        <img class="image image--adaptive h--6" src="data:image/svg+xml;base64,{{ svg_bike | base64_encode }}" />
       </div>
       <div class="pr--1 text--center">
         {%- if station.is_renting and station.is_installed %}
@@ -32,7 +32,7 @@
         {%- endif %}
       </div>
       <div>
-        <img class="image h--6" src="data:image/svg+xml;base64,{{ svg_dock | base64_encode }}" />
+        <img class="image image--adaptive h--6" src="data:image/svg+xml;base64,{{ svg_dock | base64_encode }}" />
       </div>
       <div class="pr--1 text--center">
         {%- if station.is_returning and station.is_installed %}
@@ -73,6 +73,9 @@
       var img = document.createElement("img");
       img.className = "image image--adaptive h--4";
       img.src = src;
+      // Markers are created after the framework's adaptive-image pass, so arm them directly.
+      img.style.setProperty("--framework-icon-src", 'url("' + src + '")');
+      img.setAttribute("data-adaptive", "true");
       return img;
     }
 
