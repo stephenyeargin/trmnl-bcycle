@@ -79,24 +79,30 @@
       return img;
     }
 
-    function label(text) {
+    function label(text, extra) {
       var span = document.createElement("span");
-      span.className = "label label--small";
+      span.className = "label label--small" + (extra ? " " + extra : "");
       span.textContent = text;
       return span;
     }
 
+    function row(src, text) {
+      var div = document.createElement("div");
+      div.className = "flex flex--row flex--center-y gap--xsmall";
+      div.appendChild(icon(src));
+      div.appendChild(label(text));
+      return div;
+    }
+
     function chip(s) {
       var div = document.createElement("div");
-      div.className = "flex flex--row flex--center-y gap--xsmall bg--canvas outline rounded--small p--1 z--2";
-      if (!s.is_installed) {
-        div.appendChild(label("Offline"));
+      div.className = "flex flex--col gap--xsmall bg--canvas outline rounded--small p--1 z--2";
+      if (!s.is_installed || (!s.is_renting && !s.is_returning)) {
+        div.appendChild(label("⚠︎ Offline", "label--inverted"));
         return div;
       }
-      div.appendChild(icon(bikeIcon));
-      div.appendChild(label(s.is_renting ? String(s.num_bikes_available) : "-"));
-      div.appendChild(icon(dockIcon));
-      div.appendChild(label(s.is_returning ? String(s.num_docks_available) : "-"));
+      div.appendChild(row(bikeIcon, s.is_renting ? String(s.num_bikes_available) : "-"));
+      div.appendChild(row(dockIcon, s.is_returning ? String(s.num_docks_available) : "-"));
       return div;
     }
 
